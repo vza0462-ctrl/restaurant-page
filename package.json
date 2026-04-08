@@ -4,8 +4,9 @@
   "description": "this is my nodejs exercises",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "deploy": "gh-pages -d dist"
+    "start": "webpack serve --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js",
+    "deploy": "npm run build && git subtree push --prefix dist origin gh-pages1"
   },
   "repository": {
     "type": "git",
