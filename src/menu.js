@@ -1,16 +1,56 @@
-import pizzaImg from "./images/pizza.jpeg"; // WRONG
+import { foods } from "./data/foods";
 
 export function loadMenu() {
+  
+  const rootContainerMenu = document.createElement("div");
+  rootContainerMenu.classList.add("root-menu-container");
+
+  const filter = document.createElement("div");
+  filter.classList.add("navbar")
+  filter.innerHTML=`
+  <!-- Left -->
+  <div class="nav-left">
+    <h2 class="logo">Restaurant<span>.vn</span></h2>
+    
+
+    <select class="location">
+      <option>TP. HCM</option>
+      <option>Hà Nội</option>
+    </select>
+
+    <select class="category">
+      <option>Ăn uống</option>
+      <option>Cafe</option>
+    </select>
+  </div>
+
+  <!-- Center -->
+  <div class="nav-center">
+    <input type="text" placeholder="Địa điểm, món ăn..." />
+    <button class="search-btn">🔍</button>
+  </div>
+
+  <!-- Right -->
+  <div class="nav-right">
+    <button class="order-btn">Đặt bàn</button>
+    <button class="filter-btn">⚙ Bộ lọc</button>
+    <button>Apps</button>
+    <button>Đăng nhập</button>
+    <button class="icon">➕</button>
+  </div>
+  `;
+  filter.querySelector(".order-btn").addEventListener("click", (e)=>{
+    
+  });
+
+  rootContainerMenu.appendChild(filter)
+
   const container = document.createElement("div");
   container.classList.add("menu-container");
-
-  const foods = [
-    { id:1,name: "Burger", price: "$8", img: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd" },
-    { id:2,name: "Pizza", price: "$12", img: pizzaImg },
-    { id:3,name: "Salad", price: "$6", img: "https://images.unsplash.com/photo-1550304943-4f24f54ddde9" },
-  ];
+  
 
   foods.forEach(food => {
+
     const card = document.createElement("div");
     card.classList.add("card");
     card.dataset.id = food.id;
@@ -18,18 +58,15 @@ export function loadMenu() {
       <img src="${food.img}" alt="${food.name}">
       <h3>${food.name}</h3>
       <p>${food.price}</p>
-      <button class="order-btn" data-id="${food.id}">Order</button>    `;
-    // card.addEventListener("click", (e)=>{
-    //   const id = e.currentTarget.dataset.id;
-    //   console.log(`you clicked id: ${id}`);
-    // })
+      <button class="order-btn" data-id="${food.id}">Order</button>    
+      `;
     card.querySelector(".order-btn").addEventListener("click", (e)=>{
       const id = e.target.dataset.id;
       console.log(`you clicked id: ${id}`);
     })
-
     container.appendChild(card);
   });
+  rootContainerMenu.appendChild(container);
 
-  return container;
+  return rootContainerMenu;
 }

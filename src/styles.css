@@ -55,21 +55,24 @@ footer {
 
 
 
-
-
-
-
+.root-menu-container{
+  display: flex;
+  flex-direction: column;
+  width: 99%;
+  top: 0;
+  left: 0;
+}
 
 .menu-container {
-  display: flex;
+  display: grid;
+  /* 4 columns */
+  grid-template-columns: repeat(4, 1fr);
+
   gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
   padding: 20px;
 }
 
 .card {
-  width: 200px;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
@@ -110,3 +113,228 @@ footer {
 .card button:hover {
   background: #e65c00;
 }
+
+
+
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px 20px;
+  background: #f5f5f5;
+}
+
+/* Left */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  color: red;
+}
+
+.logo span {
+  font-size: 14px;
+}
+
+select {
+  padding: 5px;
+}
+
+/* Center */
+.nav-center {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 500px;
+  margin: 0 20px;
+}
+
+.nav-center input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+}
+
+.search-btn {
+  padding: 8px;
+  border: none;
+  background: white;
+  cursor: pointer;
+}
+
+/* Right */
+.nav-right {
+  display: flex;
+  gap: 10px;
+}
+
+.nav-right button {
+  padding: 6px 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.filter-btn {
+  background: #ddd;
+}
+
+.icon {
+  border-radius: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== GLOBAL ===== */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+}
+
+/* ===== MODAL OVERLAY ===== */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px); /* 🔥 glass effect */
+
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s ease;
+}
+
+.modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ===== MODAL BOX ===== */
+.modal-content {
+  background: white;
+  width: 320px;
+  padding: 25px;
+  border-radius: 16px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
+  transform: translateY(20px) scale(0.95);
+  transition: 0.3s ease;
+}
+
+.modal.show .modal-content {
+  transform: translateY(0) scale(1);
+}
+
+/* ===== TITLE ===== */
+.modal-content h2 {
+  margin-bottom: 15px;
+  font-size: 22px;
+  text-align: center;
+}
+
+/* ===== CLOSE BUTTON ===== */
+.close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #888;
+}
+
+.close:hover {
+  color: red;
+}
+
+/* ===== FORM ===== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* INPUT */
+input, select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  outline: none;
+  transition: 0.2s;
+}
+
+input:focus, select:focus {
+  border-color: orange;
+  box-shadow: 0 0 5px rgba(255,165,0,0.4);
+}
+
+/* BUTTON */
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, orange, #ff5e00);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(255,94,0,0.4);
+}
+
+/* ===== OPEN BUTTON ===== */
+#openForm {
+  margin: 20px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: none;
+  background: #333;
+  color: white;
+  cursor: pointer;
+}
+
+#openForm:hover {
+  background: black;
+}
+
+.input-group {
+  position: relative;
+}
+
+.input-group input {
+  padding-top: 14px;
+}
+
+.input-group label {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  font-size: 12px;
+  color: #888;
+}
+
+.food-select {
+  position: relative;
+  width: 200px;
+}
+
