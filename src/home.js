@@ -1,8 +1,7 @@
+import { homeComponent } from "./components/homecp";
+
 export function loadHome() {
   const div = document.createElement("div");
-  div.innerHTML = `
-    <h2>Welcome</h2>
-    <p>Best food in town 🍔</p>
-  `;
+  div.innerHTML = homeComponent();
   return div;
 }

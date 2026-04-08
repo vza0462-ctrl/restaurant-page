@@ -1,30 +1,36 @@
 import { formLayout } from "./components/foodListform";
 import { createOrderForm } from "./components/orderform";
+import { classname } from "./const/app";
 import { emptyTable, foods, orderedmenu } from "./data/foods";
 
-export function loadorder() {
-    
-    const modal = document.createElement("div");
-    modal.classList.add("modal");
+const modal = document.createElement("div");
+export function getFormOrder(){
+    modal.classList.add(classname.show);
+}
+function removeShow(){
+    modal.classList.remove(classname.show);
+}
 
-    const orderForm = document.createElement("div");
+export function loadorder() {
+    modal.classList.add(classname.modal);
+    const orderForm = document.createElement(classname.div);
     orderForm.classList.add("modal-content");
     
     const openBtn = document.getElementById("openForm");
 
     openBtn.addEventListener("click", () => {
-        modal.classList.add("show");
+        getFormOrder();
     });
 
     modal.addEventListener("click", (e) => {
     if (e.target === modal) {
-        modal.classList.remove("show");
+        removeShow();
     }
     });
 
     orderForm.innerHTML= createOrderForm(emptyTable,orderedmenu)
     orderForm.querySelector(".close").addEventListener("click",(e)=>{
-        modal.classList.remove("show");
+        removeShow();
     });
     orderForm.querySelector("#orderBtn").addEventListener("click",(e)=>{
         ////

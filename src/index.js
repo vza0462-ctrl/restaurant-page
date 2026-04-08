@@ -3,13 +3,14 @@ import "./styles.css";
 import { createLayout } from "./template";
 import { loadHome } from "./home";
 import { loadMenu } from "./menu";
-import { loadorder } from "./order";
+import { getFormOrder, loadorder } from "./order";
 import { loadContact } from "./contact";
 
 const root = document.getElementById("content");
 
 const layout = createLayout();
 root.appendChild(layout);
+
 const order = loadorder();
 root.appendChild(order);
 
